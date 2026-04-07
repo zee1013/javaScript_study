@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alert문</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트는 식 & 문
+        // 식 = 표현식(연산식뿐만 아니라 실제 값도, 함수를 실행하는 것도 식)
+        // inch * 2.54 // 연산식은 식
+        const inch = 2
+        inch * 2.54
+        console.log(inch)
+        "안녕" // 문자열도 식
+        5 // 숫자도 식
+        // 문 = 명령(문에 끝에는 세미클론으로 구분(;))
+        // 문은 넓은 의미에서 값이나 식까지 포함합니다.
+        // 조건문 제어문 등을 예로 사용 
+        // 간단한 입출력 방법
+
+        // 알림창 출력
+        // 기본형 : alert(메시지)
+        // alert("안녕하세요? 반가워요!")
+
+        // 확인창 출력
+        // confirm(메시지) 확인이나 취소 버튼 중에서 선택(참 거짓 포함)
+
+        // 프롬포트 창에서 입력받기
+        // prompt(메시지) 또는 prompt(메시지, 기본값)
+        // prompt("이름을 입력하세요")
+        // prompt("생년월일" , "yyyy-mm-dd")
+
+        //웹 브라우저 화면에 출력
+        // document.write() 문
+        // document.write("<h1>안농</h1>")
+        
+        const name = prompt("이름을 입력하세요")
+        // document.write(name)
+        // document.write(`<h1>${name}</h1>`)
+        // document.write(`<div><h1>${name}</h1>님, 환영합니다~</div>`)
+        console.log(name)
+    </script>
+</body>
+</html>

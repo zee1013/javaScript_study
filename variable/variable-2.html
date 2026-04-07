@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수 - 2</title>
+    <style>
+        span{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        // 변수 연산
+        let x = 100
+        let y = 30
+        let total = x + y
+        // 곱하기 식 변수에 담기
+        let total2 = x*y
+        let total3 = x/y
+        console.log(x,y);
+        console.log(total);
+        document.write(`<p>x와 y를 더한 금액은 <span>${total}</span>입니다</p>`)
+        
+        // x와 y를 곱한 금액은
+        document.write(`<p>x와 y를 곱한 금액은 <span>${total2}</span>입니다</p>`)
+        document.write(`<p>x와 y를 나눈 금액은 <span>${total3}</span>입니다</p>`)
+    </script>
+</body>
+</html>
