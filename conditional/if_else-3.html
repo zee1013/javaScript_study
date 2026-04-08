@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>조건문 if - else 3</title>
+  </head>
+  <body>
+    <button id="loginBtn">Login</button>
+    <p id="text">로그아웃 상태</p>
+    <!-- 좋아요 버튼 -->
+    <button id="like">🤍</button>
+    <!-- 입력값 검사 -->
+    <div class="form">
+      <input type="text" id="input" placeholder="아이디 입력" />
+      <button id="checkBtn">확인</button>
+    </div>
+    <script>
+      let isLogin = false;
+      const btn = document.querySelector("#loginBtn");
+      console.log(btn);
+      const text = document.querySelector("#text");
+      console.log(text);
+      // 로그인 상태 변경
+      btn.addEventListener("click", function () {
+        if (isLogin) {
+          // 로그인 되었으면 => 로그아웃
+          isLogin = false;
+          btn.innerText = "Login";
+          text.innerText = "로그아웃 상태";
+        } else {
+          // 로그인 안되었을 때 => 로그인
+          isLogin = true;
+          btn.innerText = "Logout";
+          text.innerText = "로그인 상태";
+        }
+      });
+      // 좋아요 버튼
+      let isLike = false;
+      const likeBtn = document.querySelector("#like");
+      likeBtn.addEventListener("click", () => {
+        isLike = !isLike; // 상태 토글
+        if (!isLike) {
+          // isLike = false;
+          likeBtn.innerText = "🤍";
+        } else {
+          // isLike = true;
+          likeBtn.innerText = "❤";
+        }
+      });
+      // 입력값 검사
+      const input = document.querySelector("#input");
+      const inputBtn = document.querySelector("#checkBtn");
+      console.log(input);
+      inputBtn.addEventListener("click", () => {
+        console.log(input.value);
+        if (input.value === "") {
+          alert("아이디를 입력하세요");
+        } else {
+          alert("확인 완료!");
+        }
+      });
+    </script>
+  </body>
+</html>
