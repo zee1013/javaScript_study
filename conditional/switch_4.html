@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>switch문 예제4</title>
+  </head>
+  <body>
+    <button onclick="handleClick('login')">Login</button>
+    <button onclick="handleClick('join')">signUp</button>
+    <button onclick="handleClick('logout')">Logout</button>
+    <script>
+      function handleClick(type) {
+        console.log(type);
+        switch (type) {
+          case "login":
+            console.log("로그인 처리");
+            break;
+          case "join":
+            console.log("회원가입 처리");
+            break;
+          case "logout":
+            console.log("로그아웃 처리😂");
+            break;
+            default:
+              console.log("잘못 된 요청");
+              
+        }
+      }
+    </script>
+  </body>
+</html>
