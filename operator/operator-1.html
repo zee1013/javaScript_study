@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    <script>
+        // 계산이나 비교할 때 쓰는 기호
+        // 1. 산술연산자 (계산)
+        let a = 10
+        let b = 3
+        console.log(a+b);
+        console.log(a-b);
+        console.log(a*b); // 곱하기
+        console.log(a/b); // 나누기
+        console.log(a%b); // 나머지 값
+
+        // 2. 비교연산자 (맞는지 확인)
+        console.log(5 > 3); // true
+        console.log(5 < 3); // false
+        console.log(5 == 5); // true
+        console.log(5 != 3); // true
+
+        // 3. === (완전 같아??)
+        console.log(5 == "5"); // true 느슨함
+        console.log(5 === "5"); // false 값과 타입이 모두 같아야 함, 엄격
+        
+        // 4. 논리 연산자 (조건 여러 개)
+        let age = 20
+        console.log(age > 18 && age < 30); // true
+        console.log(age > 18 || age > 30); // true
+        // &&는 둘 다 맞아야 true
+        // ||는 둘 중 하나만 맞아도 true
+        // ! 반대로 바꾸기(부정)
+        let isLogin = true
+        console.log(!isLogin); // true => false
+
+        // 5. ++ 증가 연산자, -- 감소 연산자
+        let count = 5
+        count++
+        console.log(count);
+        count--
+        console.log(count);
+        
+        
+    </script>
+</body>
+</html>

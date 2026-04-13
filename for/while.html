@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while문 - 조건에 만족할 때 까지 반복</title>
+  </head>
+  <body>
+    <script>
+      let i = 1;
+      // while(i <= 5){
+      //     i++;
+      //     console.log(i);
+      // }
+      let ii = 5;
+      do {
+        console.log("실행");
+      } while (ii < 3); // 거짓, 딱 한 번만 실행됨
+      const answer = 3; // 정답(컴퓨터가 정한 숫자)
+      let user;
+      do {
+        user = prompt("1부터 5까지 숫자를 맞춰보세요!");
+        if (user == answer) {
+          alert("정답!!!");
+        } else {
+          alert("땡!");
+        }
+      } while (user != answer); // 정답이 아니면 계속 반복
+    </script>
+  </body>
+</html>

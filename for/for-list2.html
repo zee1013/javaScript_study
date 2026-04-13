@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for문 배열</title>
+</head>
+<body>
+    <h1>상품 리스트</h1>
+    <ul id="list">
+        <!-- js로 출력 -->
+        <!-- <li>사과</li>
+        <li>바나나</li>
+        <li>딸기</li> -->
+    </ul>
+    <script>
+        const list = document.querySelector("#list")
+        const products = ["사과", "바나나", "딸기", "포도"]
+        console.log(products);
+        for(let i = 0; i < products.length; i++){
+            console.log(i);
+            console.log(products[i]);
+            
+            list.innerHTML += `<li>${products[i]}</li>`
+            
+        }
+    </script>
+</body>
+</html>
