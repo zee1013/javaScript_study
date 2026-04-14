@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    <button id="btn">클릭 +</button>
+    <p class="counter">클릭 횟수 : 0</p>
+    <script>
+        let clickBtn = document.querySelector("#btn")
+        let counter = document.querySelector(".counter")
+        let count = 0
+        clickBtn.addEventListener("click", ()=>{
+            count++
+            console.log(count);
+            counter.textContent=`클릭 횟수 : ${count}`
+        })
+    </script>
+</body>
+</html>

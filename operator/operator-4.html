@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비교 연산자</title>
+    <style>
+        #message{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <h2>로그인</h2>
+    <form>
+      <div class="userName">
+        <label for="userName">username :</label>
+        <input type="text" id="userName" />
+      </div>
+      <div class="userPw">
+        <label for="userPw">Password :</label>
+        <input type="text" id="userPw" />
+      </div>
+      <button type="button" id="loginBt">Login</button>
+    </form>
+    <p id="message">
+      <!-- js 출력 -->
+    </p>
+    <script>
+      // 저장된 사용자 이름이랑 비밀번호를 더미 데이터에 저장
+      const storeUser = {
+          username : "eunji",
+          password : "1234",
+      }
+      // 버튼 저장
+      const loginBt = document.querySelector("#loginBt")
+      // 유효성 검사한 메시지를 저장
+      const message = document.querySelector("#message")
+      // 버튼 클릭시
+      loginBt.addEventListener("click", ()=>{
+        //   console.log("click");
+          // 사용자가 입력하는 이름 값
+          const userName = document.querySelector("#userName").value;
+        //   console.log(userName);
+          const userPw = document.querySelector("#userPw").value;
+          // 입력된 데이터와 저장된 데이터의 값을 비교
+        //   if(userName === storeUser.username && userPw === storeUser.password){
+        //     message.textContent = "로그인 성공!"
+        //   }else{
+        //     message.textContent = "정보가 일치하지 않습니다"
+        //   }
+        if(userName !== storeUser.username && userPw !== storeUser.password){
+            message.textContent = "정보가 일치하지 않습니다"
+        }else if(userName !== storeUser.username){
+            message.textContent = "아이디가 일치하지 않습니다"
+        }else if(userPw !== storeUser.password){
+            message.textContent = "비밀번호가 일치하지 않습니다"
+        }else{
+            message.textContent = "로그인 성공!"
+        }
+      })
+    </script>
+  </body>
+</html>

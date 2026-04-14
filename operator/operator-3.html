@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자</title>
+</head>
+<body>
+    <h2 id="counter">click : 0</h2>
+    <button id="indcrease">+</button>
+    <button id="decrease">-</button>
+    <script>
+        let counter = document.querySelector("#counter")
+        let indcrease = document.querySelector("#indcrease")
+        let decrease = document.querySelector("#decrease")
+        let count = 0
+        // 증가
+        indcrease.addEventListener("click", ()=>{
+            count++
+            counter.textContent = `click : ${count}`
+        })
+        // 감소
+        decrease.addEventListener("click", ()=>{
+            count--
+            counter.textContent = `click : ${count}`
+        })
+    </script>
+</body>
+</html>
