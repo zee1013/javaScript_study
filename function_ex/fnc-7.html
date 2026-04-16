@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 예제 7 - 메뉴 토글</title>
+    <style>
+        .submenu{
+            display: none;
+        }
+        .submenu.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <button class="menu">🍔</button>
+            <ul class="submenu">
+                <li>🍟</li>
+                <li>🌭</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        const menu = document.querySelector(".menu")
+        const subMenu = document.querySelector(".submenu")
+        // 토글 기능
+        function toggleSubMenu(){
+            subMenu.classList.toggle("active")
+        }
+        menu.addEventListener("click", toggleSubMenu)
+    </script>
+</body>
+</html>

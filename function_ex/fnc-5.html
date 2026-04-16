@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 예제 5 - 이미지 슬라이드</title>
+</head>
+<body>
+    <img src="images/1.jpg" alt="1" id="slideImg" width="200">
+    <button onclick="nextImage()">다음 ></button>
+    <script>
+        let images = ["images/1.jpg" , "images/2.jpg", "images/3.jpg"]
+        let index = 0
+        // 다음 클릭시 함수 정의
+        function nextImage(){
+            index++
+            // console.log(index);
+            if(index >= images.length){
+                index = 0
+            }
+            document.querySelector("#slideImg").src = images[index]
+        }
+    </script>
+</body>
+</html>

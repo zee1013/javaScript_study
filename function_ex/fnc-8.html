@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 예제 8 - 메뉴 토글</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1 id="title">안녕하세요 🎈</h1>
+    <button id="btn">글자 바꾸기</button>
+    <script>
+        const title = document.querySelector("#title")
+        const btn = document.querySelector("#btn")
+        // function toggleTxt(){
+        //     if(title.innerText === "안녕하세요 🎈"){
+        //         title.innerText = "🎉반가워요✨"
+        //     }else{
+        //         title.innerText = "안녕하세요 🎈"
+        //     }
+        // }
+        let isHello = true
+        function toggleTxt(){
+            isHello = !isHello
+            title.innerText = isHello ? "안녕하세요 🎈" : "🎉반가워요✨"
+        }
+        btn.addEventListener("click", toggleTxt)
+    </script>
+</body>
+</html>
