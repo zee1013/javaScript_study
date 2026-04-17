@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach</title>
+</head>
+<body>
+    <ul id="fruitList">
+        <!-- js 출력 -->
+    </ul>
+    <script>
+        const fruits = ["사과", "바나나", "포도" , "망고" , "복숭아" , "키위"]
+        const list = document.getElementById("fruitList")
+        fruits.forEach(function(item, index){
+            console.log(item);
+            console.log(index);
+            list.innerHTML += `<li>${index+1}. ${item}</li>`
+            
+        })
+    </script>
+</body>
+</html>
