@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key up</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+        }
+        .box1.active{
+            background-color: rgb(175, 224, 226);
+        }
+        .box2.active{
+            background-color: rgb(203, 170, 223);
+        }
+        .box3.active{
+            background-color: rgb(97, 160, 95);
+        }
+        .box4.active{
+            background-color: rgb(231, 192, 192);
+        }
+    </style>
+</head>
+<body>
+    <h1>key up event</h1>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+    <div class="box box4">box4</div>
+    <script>
+        document.addEventListener("keyup", (e)=>{
+            // console.log(e);
+            let key = e.key.toLowerCase()
+            // console.log(key);
+            // box 변수를 초기화하기 위해 null 값을 할당함
+            let box = null
+            if(key === "enter"){
+                box = document.querySelector(".box1")
+            }else if(key === "shift"){
+                box = document.querySelector(".box2")
+            }else if(key === "control"){
+                box = document.querySelector(".box3")
+            }else if(key === "alt"){
+                box = document.querySelector(".box4")
+            }
+            if(box != null){
+                box.classList.add("active")
+            }else{
+                box.classList.remove("active")
+            }
+            console.log(box);
+            
+        })
+    </script>
+</body>
+</html>
