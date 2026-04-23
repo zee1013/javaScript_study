@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style: none;
+}
+.row{
+    width: 800px;
+    margin: 100px auto;
+}
+.row ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+li{
+    width: calc((100% - 20px)/3);
+}
+li img{
+    width: 100%;
+    display: block;
+}
+/* 클릭시 모달창 */
+#lightBox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+#lightBox-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
