@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string 객체</title>
+</head>
+<body>
+    <script>
+        // 1. length 속성
+        const srt = "hello, javaScript"
+        console.log(`1.lenght : ${srt.length}`);
+        
+        // 2. toUpperCase() , toLowerCase()
+        const txt = "hello"
+        console.log(`2.toUpperCase() 대문자 : ${txt.toLocaleUpperCase()}`);
+        console.log(`2.toLowerCase() 소문자 : ${txt.toLocaleLowerCase()}`);
+
+        // 3. includes()
+        const email = "user@example.com"
+        console.log(`3. @ 포함 여부 : ${email.includes("@")}`);
+
+        // 4. trim() 공백을 제거
+        const input = " he ll o "
+        console.log(input.length);
+        console.log(input.trim().length); 
+        
+        // 5. slice()
+        const str2 = "javaScript"
+        // slice(시작 인덱스(포함), 끝 인덱스(미포함, 바로 앞까지만 자름))
+        console.log(`부분 문자열 : ${str2.slice(0,4)}`);
+        console.log(`부분 문자열 : ${str2.slice(4,10)}`);
+        
+        // 6. replace()
+        const sentence = "I like java"
+        console.log(`6. 문자열 교체 : ${sentence.replace("java", "javaScript")}`);
+        
+        // 7. split()
+        const data = "apple,banana,mango,orange"
+        console.log(`7. 문자열 분리 : ${data.split("")}`);
+        
+
+    </script>
+</body>
+</html>
