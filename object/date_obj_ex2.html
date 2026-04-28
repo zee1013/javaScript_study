@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date 객체 활용 - 날짜 선택 기록하기</title>
+    <style>
+        :root {
+        --primary-color: #4caf50;
+        --primary-hover-color: #337435;
+        --secondary-color: #ff9800;
+        --bg-color: #f4f4f4;
+        --text-white-color: #fff;
+        --text-color: #333;
+        --font-family: "Segoe UI", sans-serif;
+        /* 간격 */
+        --space-s: 10px;
+        --space-m: 15px;
+        --space-l: 20px;
+        --space-xl: 50px;
+        /* 그림자 */
+        --shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{font-family: var(--font-family);
+        color: var(--text-color);
+        background-color: var(--bg-color);
+    }
+    header{
+        padding: var(--space-l);
+        text-align: center;
+        color: var(--text-white-color);
+        background-color: var(--primary-color);
+    }
+    .container{
+        width: 50%;
+        margin: var(--space-xl) auto;
+
+    }
+    .card{
+        padding: var(--space-m);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        background-color: var(--text-white-color);
+    }
+    h2{
+        color: var(--primary-color);
+    }
+    #date-form{
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+        margin-top: var(--space-m);
+    }
+    input, button{
+        padding: var(--space-s);
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+    button{
+        background-color: var(--primary-color);
+        color: var(--text-white-color);
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: var(--primary-hover-color);
+    }
+    .log{
+        padding: var(--space-s);
+        margin-top: var(--space-m);
+        border-radius: 8px;
+        background-color: #eee;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>date 객체 활용 날짜 선택하기</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>날짜 선택 및 기록 날짜</h2>
+            <form class="date-form" id="date-form">
+                <label for="date">날짜 선택 : </label>
+                <input type="date" name="date" id="userDate">
+                <button type="submit">기록하기</button>
+            </form>
+            <div class="log" id="log">
+                <!-- js 출력 -->
+                 <!-- <p><strong>선택된 날짜 : </strong>
+                <br>(작성한 날짜 시간 :)</p> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector("#date-form")
+        const log = document.querySelector("#log")
+        
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault()
+            const userDate = document.getElementById("userDate").value
+            console.log(userDate); // 사용자가 선택한 날짜가 담김
+            const now = new Date().toLocaleDateString()
+            console.log(now); // 사용자가 등록한 날짜
+            log.innerHTML += `
+            <p><strong>선택된 날짜 : ${userDate} </strong>
+                <br>(작성한 날짜 시간 : ${now})</p>
+                <hr>
+            `;
+            document.getElementById("userDate").value = ""
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <p>현재 시각 : 
+            <span class="display">
+                <!-- JS 출력 -->
+            </span>
+        </p>
+    </div>
+
+    <script>
+        // 현재 시간을 나타내는 함수
+        function displayNow(){
+            // console.log("확인");
+            let now = new Date()
+            // console.log(now);
+            const currentTime = now.toLocaleTimeString()
+            // console.log(currentTime);
+            const display = document.querySelector(".display")
+            display.innerHTML = `${currentTime}`
+            
+        }
+        // displayNow()
+        // setInterval() => 함수는 일정시간 간격으로 반복실행하는 함수이다. 1000은 1초
+        setInterval(displayNow, 1000)
+    </script>
+</body>
+</html>
