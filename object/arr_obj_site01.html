@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 리스트</title>
+  </head>
+  <body>
+    <h1>상품 목록</h1>
+    <div class="list">
+      <!-- js 출력 -->
+    </div>
+    <div id="price">
+        <!-- js 출력 -->
+    </div>
+    <script>
+      // 상품 리스트 더미데이터
+      const products = [
+        { name: "노트북", price: 1200000 },
+        { name: "마우스", price: 30000 },
+        { name: "키보드", price: 80000 },
+      ];
+      // 데이터 추가
+      products.push({ name: "모니터", price: 800000 });
+      //   첫 번째 데이터 삭제 shift()
+      products.shift();
+
+      // 특정 데이터 수정 splice
+      products.splice(
+        1,
+        1,
+        { name: "게이밍키보드", price: 180000 },
+        { name: "게이밍마우스", price: 80000 },
+      );
+      console.log(products);
+
+      // 화면 출력
+      const list = document.querySelector(".list");
+      let html = "";
+      products.forEach((item) => {
+          // console.log(item);
+        html += `
+        <div class = "card">
+            <h3>이름 : ${item.name}</h3>
+         <p>가격 :  ${item.price}원</p>
+         </div>
+        `;
+      });
+      list.innerHTML = html;
+    
+    //   가격만 따로 문자열로 만들기
+    const priceList = products.map((p)=>{
+        console.log(p.price);
+        return p.price
+    })
+    console.log(`가격 목록 : ${priceList.join("==")}`);
+    const price = document.getElementById("price")
+    price.innerHTML = priceList
+    </script>
+  </body>
+</html>
