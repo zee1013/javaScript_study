@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval() 배너 슬라이드 자동 기능 넣기</title>
+</head>
+<body>
+    <!-- <div id="banner">1번 배너</div> -->
+     <img src="images/1.jpg" alt="" id="banner">
+    <script>
+        const bannerList = ["images/1.jpg", "images/2.jpg", "images/3.jpg"]
+        let index = 0
+        const banner = document.getElementById("banner")
+        setInterval(() => {
+            index = (index + 1) % bannerList.length
+            // banner.textContent = bannerList[index]
+            banner.src = bannerList[index]
+        }, 2000);
+    </script>
+</body>
+</html>

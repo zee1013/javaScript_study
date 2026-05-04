@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠키 사용 팝업창 기능</title>
+    <!-- jQuery cookie 플러그인 불러오기 (쿠키를 쉽게 다룰 수 있게 해줌) -->
+     <script src="js/jquery-1.12.3.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+      integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+      <script src="js/main.js"></script>
+
+      <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .notice_wrap{
+            display: none;
+            width: 300px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            box-shadow: 0 0 8px #777;
+        }
+        
+        img{
+            width: 100%;
+        }
+        .closeWrap{
+            padding: 10px;
+
+        }
+        .closeBtn{
+            cursor: pointer;
+            margin-left: 60px;
+            border: none;
+            background-color: transparent;
+        }
+      </style>
+</head>
+<body>
+    <div class="notice_wrap">
+        <!-- 이미지 -->
+         <img src="KakaoTalk_20260430_154542724.png" alt="고양잉">
+         <!-- 닫기 -->
+          <div class="closeWrap">
+            <!-- 체크박스 : 3일 동안 이 창 안보이기 -->
+             <input type="checkbox" id="chk">
+             <label for="chk">3일 동안 보지않기</label>
+             <!-- 닫기 버튼 -->
+              <button class="closeBtn">닫기 X</button>
+          </div>
+    </div>
+</body>
+</html>

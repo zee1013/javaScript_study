@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math 객체 활용 색 변경</title>
+</head>
+<body>
+    <button>색 바꾸기</button>
+    <script>
+        const btn = document.querySelector("button")
+        // 색 변경하는 함수
+        function randomColor(){
+            const r = Math.floor(Math.random() * 256)
+            // console.log(r);
+            const g = Math.floor(Math.random() * 256)
+            const b = Math.floor(Math.random() * 256)
+            const bgColor = `rgb(${r}, ${g}, ${b})`
+            console.log(bgColor);
+            document.body.style.backgroundColor = bgColor
+        }
+
+        btn.addEventListener("click", randomColor)
+    </script>
+</body>
+</html>

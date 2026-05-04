@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 객체</title>
+    <style>
+        body{
+            height: 1500px;
+        }
+    </style>
+</head>
+<body>
+    <a href="gotoback.html">뒤로가기 페이지</a>
+    <h1>window 개체 주요 속성과 매서드</h1>
+    <ul>
+        <li>
+            <strong>window.innerWidth(보이는 화면 크기) : </strong>
+            <span id="innerWidth">
+            <!-- js 출력 -->
+            </span>
+        </li>
+        <li>
+            <strong>window.innerHeight(보이는 화면 높이) : </strong>
+            <span id="innerHeight">
+            <!-- js 출력 -->
+            </span>
+        </li>
+        <li>
+            <strong>window.location(현재 페이지의 주소 정보) : </strong>
+            <span id="location">
+            <!-- js 출력 -->
+            </span>
+        </li>
+        <li>
+            <strong>window.document(현재 html 전체) : </strong>
+            <span id="document">
+            <!-- js 출력 -->
+            </span>
+        </li>
+        <li>
+            <strong>window.history(사용자의 뒤로가기 기록) : </strong>
+            <span id="history">
+            <!-- js 출력 -->
+            </span>
+        </li>
+        <li>
+            <strong>window.navigator(사용자 브라우저 정보) : </strong>
+            <span id="navigator">
+            <!-- js 출력 -->
+            </span>
+        </li>
+    </ul>
+<hr>
+    <h2>scrollTO()와 scrollBy()</h2>
+    <ul>
+        <li>
+            <strong>scrollTo(x, y) : (페이지의 지정된 위치로 스크롤)</strong>
+        </li>
+        <li>
+            <strong>scrollBy(x, y) : (현재 위치를 기준으로 지정된 거리만큼 스크롤) </strong>
+        </li>
+    </ul>
+    <button onclick="window.scrollTo(0, 0)">페이지 맨 위로 이동(scrollTO())</button>
+    <button onclick="window.scrollBy(0, 100)">100px 아래로 이동(scrollBy())</button>
+
+    <!-- window 매서드 -->
+    <ul>
+         <li><strong>alert()</strong>: <button onclick="alert('안녕하세요!')">실행</button></li>
+      <li><strong>confirm()</strong>: <button onclick="confirm('확인하시겠습니까?')">실행</button></li>
+      <li><strong>prompt()</strong>: <button onclick="prompt('이름을 입력하세요:')">실행</button></li>
+      <li><strong>open()</strong>: <button onclick="window.open('https://www.naver.com', '_blank')">실행</button></li>
+      <li><strong>close()</strong>: <button onclick="window.close()">실행</button></li>
+      <li><strong>setInterval()</strong>: <button onclick="window.setInterval(()=>console.log('반복실행'), 1000)">실행</button></li>
+      <li><strong>setTimeout()</strong>: <button onclick="setTimeout(()=>alert('3초 후 실행!'), 3000)">실행</button></li>
+    </ul>
+
+
+
+    <script>
+        // 보이는 화면 크기
+        document.getElementById("innerWidth").textContent = `${window.innerWidth}px`
+
+        // 보이는 화면 높이
+        document.getElementById("innerHeight").textContent = `${window.innerHeight}px`
+
+        // 현재 페이지의 주소 정보
+        document.getElementById("location").textContent = `${window.location}`
+
+        // 현재 html 전체
+        document.getElementById("document").textContent = `${window.document}`
+
+        // 사용자의 뒤로가기 기록
+        document.getElementById("history").textContent = `${window.history}`
+        
+        // 정보가 포함된 객체
+        document.getElementById("navigator").textContent = `${window.navigator}`
+        // 오프라인 체크 / 기기분석
+        if(!navigator.onLine){
+            alert("인터넷 연결 없음")
+        }else{
+            console.log("온라인 연결 됨");
+            
+        }
+
+        // setInterval() 타이머
+        let count = 5
+        const timer = setInterval(()=>{
+            console.log(`남은 시간 : ${count}`);
+            count--;
+            if(count < 0){
+                clearInterval(timer)
+                console.log("타이머 종료");
+                
+            }
+        }, 1000)
+    </script>
+</body>
+</html>
