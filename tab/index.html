@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab 기능</title>
+    <style>
+        
+        .tab-btn.active{
+            /* border: none; */
+            color: #fff;
+            background-color: #333;
+        }
+        .tab-content{
+            display: none;
+        }
+        .tab-content.active{
+            display: block;
+        }
+        /* 상세보기 */
+        .detail-wrap{
+            position: relative;
+            width: 200px;
+        }
+        .img-box{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .img-box img{
+            display: block;
+            width: 100%;
+        }
+        .img-box.active{
+            height: auto;
+        }
+        .more-btn{
+            margin: auto;
+            display: block;
+        }
+        .fade-area{
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-menu">
+        <button class="tab-btn">공지</button>
+        <button class="tab-btn">문의</button>
+        <button class="tab-btn">리뷰</button>
+        <button class="tab-btn">상세보기</button>
+    </div>
+    <!-- 탭 내용 -->
+     <div class="tab-content">공지 내용</div>
+     <div class="tab-content">문의 내용</div>
+     <div class="tab-content">리뷰 내용</div>
+     <div class="tab-content detail-wrap">
+        <div class="img-box">
+            <img src="KakaoTalk_20260506_145415689.png" alt="">
+        </div>
+        <div class="fade-area">
+            <button class="more-btn">더보기</button>
+        </div>
+     </div>
+
+     <script>
+        const btns = document.querySelectorAll(".tab-btn")
+        const contents = document.querySelectorAll(".tab-content")
+        btns.forEach((btn , index)=>{
+            // console.log(btn, index);
+            btn.addEventListener("click" , ()=>{
+                // console.log("click");
+
+                // 1. 모든 버튼 off
+                btns.forEach((b) => b.classList.remove("active"))
+
+                // 2. 모든 내용 off
+                contents.forEach((c) => c.classList.remove("active"))
+
+                // 3. 클릭한 버튼 on
+                btn.classList.add("active")
+
+                // 4. 같은 번호 내용 on
+                contents[index].classList.add("active")
+            })
+        })
+
+        // 상세 더보기 버튼 클릭시
+        const detailBtn = document.querySelector(".more-btn")
+        const imgBox = document.querySelector(".img-box")
+        detailBtn.addEventListener("click", ()=>{
+            imgBox.classList.toggle("active")
+            
+            // 버튼 글자 바꾸기
+            if(imgBox.classList.contains("active")){
+                detailBtn.textContent = "접기"
+            }else{
+                detailBtn.textContent = "더보기"
+            }
+        })
+
+     </script>
+</body>
+</html>
