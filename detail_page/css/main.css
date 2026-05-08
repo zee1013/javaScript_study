@@ -12,13 +12,26 @@ a {
   color: #333;
 }
 /* 전체 레이아웃 */
+/* 카트 아이콘 */
+#cart-icon{
+  padding: 10px 16px;
+  border-radius: 50px;
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: tomato;
+}
 .container {
   max-width: 600px;
-  margin: auto;
+  margin: 50px auto;
 }
 .product {
+  margin-top: 30px;
   display: flex;
-  gap: 20px;
+  gap: 30px;
   align-items: flex-start;
 }
 #cup {
@@ -76,4 +89,8 @@ button {
 }
 #detail li{
     list-style: disc;
+}
+.bluetext{
+  font-weight: bold;
+  color: royalblue;
 }
