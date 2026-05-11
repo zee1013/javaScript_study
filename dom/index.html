@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 요소의 내용 수정</title>
+</head>
+<body>
+    <button onclick="innerTxt()">innerText로 표시하기</button>
+    <button onclick="innerHm()">innerHtml로 표시하기</button>
+    <h1>현재 시각 : </h1>
+    <div id="current">
+        <!-- js 로 출력 -->
+    </div>
+    <script>
+        const current = document.getElementById("current")
+        // 기본형
+        // 요소명.innerText = 내용
+        // 요소명.innerHtml = 내용
+        
+        const now = new Date()
+        console.log(now);
+        function innerTxt(){
+            console.log("실행");
+            current.innerText = now
+        }
+        
+        // innerHtml 함수 실행
+        function innerHm(){
+            current.innerHTML = `<strong>${now}</strong>`
+        }
+    </script>
+</body>
+</html>

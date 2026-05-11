@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- 열기 버튼 -->
+    <button class="openBtn">창 열기</button>
+    <!-- modal --><!doctype html>
+    <html lang="ko">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+          /* 열기 버튼 */
+          .openBtn {
+            padding: 10px 20px;
+            cursor: pointer;
+          }
+
+          /* 모달 배경 */
+          .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+          }
+          /* 모달창 */
+          .modal-content {
+            width: 300px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+          }
+          /* 닫기 버튼 */
+          .closeBtn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            cursor: pointer;
+            font-size: 20px;
+          }
+        </style>
+      </head>
+      <body>
+        <!-- 열기버튼 -->
+        <button class="openBtn">모달열기</button>
+        <!-- 모달 -->
+        <div class="modal">
+          <div class="modal-content">
+            <span class="closeBtn">X</span>
+            <h2>로그인 창</h2>
+            <p>모달 내용</p>
+          </div>
+        </div>
+      </body>
+    </html>
+    <div class="modal">
+      <div class="modal-content">
+        <span class="closeBtn">X</span>
+        <h2>로그인 창</h2>
+        <p>모달 내용</p>
+      </div>
+    </div>
+
+    <script>
+        const openBtn = document.querySelector(".openBtn")
+        const modal = document.querySelector(".modal")
+        const closeBtn = document.querySelector(".closeBtn")
+
+        // 모달 열기
+        openBtn.addEventListener("click",()=>{
+            modal.style.display = "flex"
+        })
+
+        // 닫기 버튼 클릭
+        closeBtn.addEventListener("click",()=>{
+            modal.style.display = "none"
+        })
+        // 배경 클릭했을 때 창 닫기
+        modal.addEventListener("click", (e)=>{
+            // e.target.style.display = "none"
+            // 배경 클릭했을 때만 닫기 설정
+            if(e.target === modal){
+                e.target.style.display = "none"
+            }
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            font-weight: bold;
+            color: blue;
+        }
+        #big{
+            width: 200px;
+            border: 3px solid #333;
+        }
+        .imgBox img{
+            width: 100px;
+            border: 3px solid transparent;
+            transition: all 0.5s;
+        }
+        .imgBox img:hover, .imgBox img.active{
+            border-color: red;
+            transform: scale(1.1);
+        }
+        #bigImg{
+            width: 200px;
+            border: 3px solid #ddd;
+        }
+        .smallImg img{
+            width: 100px;
+            border: 3px solid transparent;
+            transition: all 0.4s;
+        }
+        .smallImg img:hover{
+            border: 3px solid tomato;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>회사소개</li>
+        <li>제품소개</li>
+        <li>고객센터</li>
+    </ul>
+    <div id="result">
+        <!-- 내가 클릭한 글자 출력 js -->
+    </div>
+
+    <!-- 클릭한 이미지 크게 보이게 -->
+     <!-- 큰 이미지 -->
+      <img src="images/cup-1.png" alt="redCup" id="big">
+      <!-- 작은 이미지 -->
+       <div class="imgBox">
+        <img src="images/cup-1.png" alt="">
+        <img src="images/cup-2.png" alt="">
+       </div>
+
+       <!-- 연습 -->
+        <!-- 큰 이미지 -->
+         <img src="images/easys-1.jpg" alt="" id="bigImg">
+         <!-- 작은 이미지 -->
+          <div class="smallImg">
+            <img src="images/easys-1.jpg" alt="">
+            <img src="images/easys-2.jpg" alt="">
+          </div>
+
+          <!-- 삭제버튼 만들기 -->
+           <ul id="todo">
+            <li>공부하기<button>삭제</button></li>
+            <li>운동하기<button>삭제</button></li>
+            <li>청소하기<button>삭제</button></li>
+           </ul>
+    <script>
+        const menu = document.querySelector("#menu")
+        const result = document.getElementById("result")
+        menu.addEventListener("click", (e)=>{
+            // console.log(e.target);
+            // alert(`${e.target.innerText} 클릭`)
+            result.innerHTML = `<p>내가 클릭한 메뉴는 <span>${e.target.innerText}</span>!</p>`
+        })
+
+        // 작은 이미지 클릭시 
+        const imgBox = document.querySelector(".imgBox")
+        const big = document.querySelector("#big")
+        imgBox.addEventListener("click", (e)=>{
+            // console.log(e.target.src);
+            // 큰 이미지 변경
+            big.src = e.target.src
+            // 이미지들을 forEach해서 active 지우기
+            const imgs = document.querySelectorAll(".imgBox img")
+            imgs.forEach((img)=>{
+                // console.log(img);
+                img.classList.remove("active")
+            })
+            e.target.classList.toggle("active")
+        })
+
+        // 연습
+        const bigImg = document.getElementById("bigImg")
+        const smallImg = document.querySelector(".smallImg")
+        smallImg.addEventListener("click", (e)=>{
+            bigImg.src = e.target.src
+        })
+
+        // 삭제버튼 만들기
+        const todo = document.querySelector("#todo")
+        todo.addEventListener("click", (e)=>{
+            if(e.target.tagName === "BUTTON"){
+                // 클릭한 버튼의 부모 요소 지우기
+                e.target.parentElement.remove()
+            }
+        })
+    </script>
+</body>
+</html>
