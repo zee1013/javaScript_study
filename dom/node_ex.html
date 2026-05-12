@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공부 기록장</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        background: #f4f4f4;
+        padding: 50px;
+      }
+
+      #container {
+        width: 500px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      input,
+      select,
+      button {
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      button {
+        border: none;
+        background: black;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      ul {
+        margin-top: 20px;
+        list-style: none;
+      }
+
+      li {
+        background: #f8f8f8;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      li:hover {
+        background: pink;
+        transform: scale(1.02);
+      }
+
+      .date {
+        font-size: 14px;
+        color: gray;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>📚 공부 기록장</h1>
+      <p>공부 내용을 입력하세요</p>
+      <p>클릭하면 삭제됩니다</p>
+      <form>
+        <!-- 공부 내용 -->
+        <input
+          type="text"
+          id="subject"
+          placeholder="공부 내용을 입력하세요"
+          autofocus
+        />
+        <!-- 날짜 -->
+        <input type="date" id="studyDate" />
+        <!-- 이모지 선택 -->
+        <select id="emoji">
+          <option value="📚">📚 공부</option>
+          <option value="💻">💻 코딩</option>
+          <option value="🎨">🎨 디자인</option>
+          <option value="🔥">🔥 열공</option>
+          <option value="🚀">🚀 프로젝트</option>
+        </select>
+        <button class="btn">추가</button>
+      </form>
+      <hr />
+      <ul id="itemList">
+        <!-- js 출력 -->
+         <!-- <li><strong>🔥 공부하기</strong>
+        <p class="date">📅 2026.05.12</p>
+        </li> -->
+      </ul>
+    </div>
+
+    <script>
+        const btn = document.querySelector(".btn")
+        const itemList = document.querySelector("#itemList")
+        btn.addEventListener("click", (e)=>{
+            e.preventDefault()
+
+            // 요소 가져오기
+            const subject = document.querySelector("#subject")
+            const studyDate = document.querySelector("#studyDate")
+            const emoji = document.querySelector("#emoji")
+
+            if(subject.value.trim() === ""){
+                alert("내용을 입력하세요")
+                return
+            }
+
+            // li 만들기
+            const newLi = document.createElement("li")
+            console.log(newLi);
+            newLi.innerHTML = `
+            <strong>${emoji.value} ${subject.value}</strong>
+        <p class="date">📅 ${studyDate.value || "날짜 없음"}`
+            // 맨 위 추가
+            itemList.insertBefore(newLi, itemList.firstChild)
+            // input 초기화
+            subject.value = ""
+            studyDate.value = ""
+            // 클릭하면 삭제하기
+            newLi.addEventListener("click", function(){
+                this.remove()
+            })
+            // newLi.addEventListener("click", (e)=>{
+            //     e.target.remove()
+            // })
+        })
+
+    </script>
+  </body>
+</html>
