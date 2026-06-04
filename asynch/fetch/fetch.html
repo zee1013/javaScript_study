@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 fetch</title>
+</head>
+<body>
+    <div class="display">
+        <!-- js 출력 -->
+    </div>
+    <script>
+        // 서버에 데이터 요청을 보냄
+        // fetch는 바로 데이터를 주는게 아니라, promise(약속)를 돌려줌
+        fetch("data.json")
+        .then((response)=>{
+            if(!response.ok){ // response가 ok가 아니면
+                throw new Error("요청 실패") // 에러가 생기면 (강제로)코드를 멈춤
+            }
+            return response.json()
+            // 결과를 다음 .then()으로 전달
+            
+        })
+        .then((data)=>{
+            console.log(data);
+            const displayEl = document.querySelector(".display")
+            displayEl.innerHTML = `
+            <p>이름 : ${data.name}</p>
+            <p>나이 : ${data.age}</p>
+            <p>도시 : ${data.city}</p>
+            `
+        })
+        .catch((error)=>{
+            console.error(`error : ${error}`);
+            
+        })
+    </script>
+</body>
+</html>
