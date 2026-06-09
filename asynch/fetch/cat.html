@@ -48,7 +48,7 @@
         }
         .pagenation a{
             padding: 10px 15px;
-            border-radius: 50%;
+            border-radius: 50px;
             font-weight: bold;
             color: rgb(68, 53, 36);
             background-color: rgb(240, 233, 156);
@@ -56,6 +56,10 @@
         .pagenation a.active{
             color: #fff;
             background-color: rgb(99, 158, 247);
+        }
+        .page-link.disabled{
+            color: #707253;
+            background-color: #e2e2ca;
         }
     </style>
   </head>
@@ -75,6 +79,7 @@
       const catListDiv = document.querySelector("#catlist");
       const pagenationDiv = document.querySelector("#pagenation");
       const prevBtn = document.createElement("a");
+      const nextBtn = document.createElement("a");
 
       // 고양이 정보를 가져와서 화면에 출력하는 함수
       function displayCatInfo(page) {
@@ -96,7 +101,7 @@
                 const catCard = document.createElement("div")
                 catCard.className = "cat-card"
                 catCard.innerHTML = `
-                <a href="#">
+                <a href="cat_cate.html?id=${cat.id}">
                     <img src="${cat.url}" alt="" class="cat-img">
 <h2>${cat.title}</h2>
 <p>${cat.description}</p>
@@ -128,6 +133,37 @@
                 })
                 pagenationDiv.appendChild(pageLink)
             }
+            // 이전 버튼
+            prevBtn.className = "page-link"
+            prevBtn.textContent = "이전"
+            pagenationDiv.insertBefore(prevBtn, pagenationDiv.firstChild)
+            // 페이지가 1번이면 이전 버튼을 비활성화
+            prevBtn.classList.toggle("disabled", currentPage === 1);
+            // 이전 버튼 클릭시
+           // ✅ 3. 이벤트 중복 방지: 기존 이벤트 제거 후 재등록
+        const newPrevBtn = prevBtn.cloneNode(true);
+        pagenationDiv.replaceChild(newPrevBtn, prevBtn);
+        newPrevBtn.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            displayCatInfo(currentPage);
+          }
+        });
+            // 다음 버튼
+            nextBtn.className = "page-link"
+            nextBtn.textContent = "다음"
+            pagenationDiv.appendChild(nextBtn)
+            // 마지막 페이지일 때 다음 버튼 비활성화
+              nextBtn.classList.toggle("disabled", currentPage === totalPage);
+            // ✅ 3. 이벤트 중복 방지 + 4. 다음 버튼 이벤트 추가
+        const newNextBtn = nextBtn.cloneNode(true);
+        pagenationDiv.replaceChild(newNextBtn, nextBtn);
+        newNextBtn.addEventListener("click", () => {
+          if (currentPage < totalPage) {
+            currentPage++;
+            displayCatInfo(currentPage);
+          }
+        });
         }
       displayCatInfo(currentPage);
     </script>

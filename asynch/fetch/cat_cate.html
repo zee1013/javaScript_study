@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고양이 상세 정보</title>
+    <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #f0f4f8;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  .wrap {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .cat-card {
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .cat-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+  }
+</style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>고양이 정보</h1>
+      <div id="cat-list"></div>
+    </div>
+
+    <script>
+          //   url에서 쿼리 문자열을 읽어와서 고양이 아이디를 가져온다
+      const urlParms = new URLSearchParams(window.location.search)
+      const catId = urlParms.get("id")
+      function displayCatInfo(){
+          fetch("cat.json").then((res)=>res.json()).then((data)=>{
+              console.log(data);
+            const catListDiv = document.querySelector("#cat-list")
+            const cat = data.find((c)=>c.id === parseInt(catId))
+            console.log(cat); // 쿼리파람즈의 id와 같은 고양이 정보
+            if(cat){
+                const catCard = document.createElement("div")
+                catCard.className ="cat-card"
+                catCard.innerHTML = `
+                <img src="${cat.url}" alt="${cat.title}" class="cat-image">
+<h2>${cat.title}</h2>
+<p>${cat.description}</p>
+                `
+                catListDiv.appendChild(catCard)
+            }else{ catListDiv.innerHTML = "<p>고양이 정보를 찾을 수 없습니다.</p>"}
+            
+          }).catch((error)=>{console.log(error);
+      })
+      }
+      displayCatInfo()
+    </script>
+  </body>
+</html>
