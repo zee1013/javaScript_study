@@ -67,6 +67,7 @@
 
     <script>
           //   url에서 쿼리 문자열을 읽어와서 고양이 아이디를 가져온다
+          // 예: cat_cate.html?id=3 이라면 catId = "3"
       const urlParms = new URLSearchParams(window.location.search)
       const catId = urlParms.get("id")
       function displayCatInfo(){

@@ -73,7 +73,7 @@
     </div>
 
     <script>
-      // 화면에 몇 개 보여질건지 설정
+      // 화면에 몇 개 보여질건지 설정, 현재 페이지는 1페이지로 시작
       const itemsPerPage = 3;
       let currentPage = 1;
       const catListDiv = document.querySelector("#catlist");
@@ -89,15 +89,19 @@
           .then((data) => {
              // ✅ 페이지 이동 시 카드 초기화
             catListDiv.innerHTML = "";
+            
             // 페이지네이션 계산
             // 처음 보여지는 인덱스 번호
-            const startIndex = (page - 1) * itemsPerPage;
+            const startIndex = (page - 1) * itemsPerPage; 
             // 마지막 인덱스 번호
             const endIndex = startIndex + itemsPerPage
             
+            // startIndex ~ endIndex 범위의 데이터만 잘라서 카드로 출력
             const catsOnPage = data.slice(startIndex, endIndex) // 0,1,2
             catsOnPage.forEach((cat)=>{
                 // console.log(cat);
+                // 카드 생성 후 catListDiv에 추가
+                // 클릭 시 cat_cate.html?id=고양이id 로 이동
                 const catCard = document.createElement("div")
                 catCard.className = "cat-card"
                 catCard.innerHTML = `
@@ -109,14 +113,14 @@
                 `
                 catListDiv.appendChild(catCard)
             })
-            pagenation(data.length)
+            pagenation(data.length) // 전체 데이터 수로 페이지네이션 생성
           })
           .catch((error) => {
             console.log(error);
           });
         }
         // 페이지네이션 생성
-        function pagenation(totalItems){
+        function pagenation(totalItems){ // 총 페이지 수 계산
             pagenationDiv.innerHTML = ""
             const totalPage = Math.ceil(totalItems / itemsPerPage)
             for(let i = 1; i <= totalPage; i++){
