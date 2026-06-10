@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+        #catInfo{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        #catInfo img{
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>😸고양이🐾</h1>
+    <div id="catInfo"></div>
+
+    <script>
+        async function getCats() {
+            try{
+                const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=10")
+                const cats = await res.json()
+                const catInfo = document.querySelector("#catInfo")
+                cats.forEach(cat => {
+                    // console.log(cat);
+                    catInfo.innerHTML += `
+                    <div class="cat-card">
+                    <img src="${cat.url}" alt="">
+                    </div>
+                    `
+                });
+            }
+            catch(error){
+                console.log(error);
+                
+            }
+
+        }getCats()
+    </script>
+</body>
+</html>
+
