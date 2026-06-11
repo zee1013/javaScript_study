@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고양이 목록</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,li,a{
+            list-style: none;
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            display: block;
+            width: 100%;
+        }
+        #catList {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .card h3 {
+        padding: 10px;
+      }
+
+    </style>
+</head>
+<body>
+    <h1>😸고양이 목록😻</h1>
+    <div id="catList">
+        
+        </div>
+    </div>
+
+    <script>
+        async function getCats() {
+            const res = await fetch("cats.json")
+            // 응답 데이터를 JSON 형태로 변환
+            const cats = await res.json()
+            const catList = document.querySelector("#catList")
+            cats.forEach((cat) => {
+                catList.innerHTML += `
+                <div class="card">
+                    <!-- 클릭하면 detail.html로 이동 -->
+                    <!-- ?id=고양이번호 형태로 URL 파라미터 전달 -->
+            <a href="detail.html?id=${cat.id}">
+                <img src="${cat.image}" alt="${cat.name}">
+                <h3>${cat.name}</h3>
+                
+            </a>
+                `
+            });
+        }
+        getCats()
+    </script>
+</body>
+</html>
