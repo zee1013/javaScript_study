@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>날씨🌝</title>
+    <style>
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+      }
+      .title {
+        /* margin-bottom: 5%; */
+        text-align: center;
+        font-size: 21px;
+        color: rgb(52, 78, 133);
+      }
+      h4 {
+        font-size: 14px;
+        color: #999;
+      }
+      .search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        border: 1px solid #dfe1e5;
+        border-radius: 50px;
+        padding: 8px 8px 8px 20px;
+        box-shadow: 0 1px 6px rgba(32, 33, 36, 0.1);
+        transition: 0.2s;
+      }
+      .search-box:focus-within {
+        box-shadow: 0 1px 15px rgba(35, 90, 255, 0.2);
+      }
+      input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 14px;
+      }
+      input::placeholder {
+        color: #d0dfff;
+      }
+      #searchBtn {
+        border: none;
+        color: rgb(82, 103, 197);
+        background: #e3f0fd;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 12px;
+        flex-shrink: 0;
+        transition: 0.3s;
+      }
+      #searchBtn:hover {
+        background: #c2daff;
+      }
+      .current-Weather {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .forecast {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .forecast-item {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        width: 120px;
+      }
+      .map {
+        margin-top: 20px;
+      }
+      .map iframe {
+        position: relative;
+        /* top: 50%; */
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">🌝날씨🌠</h2>
+      <div class="search">
+        <div class="search-box">
+          <input
+            type="text"
+            id="city"
+            placeholder="도시명을 입력하세요 (ex) Daegu"
+          />
+          <button id="searchBtn">검색</button>
+        </div>
+      </div>
+      <!-- 도시 날씨 -->
+      <div id="currentWeather">
+        <!-- js 출력 -->
+      </div>
+      <!-- 5일간 날씨 -->
+      <div id="forecast" class="forecast">
+        <!-- js -->
+      </div>
+      <!-- 지도 출력 -->
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3233.2126171843015!2d128.59144067605695!3d35.868306119674244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565e3c3dd62828f%3A0xb36b33bf2f38782a!2z6re466aw7Lu07ZOo7YSw7JWE7Yq47ZWZ7JuQIOuMgOq1rOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1781247217656!5m2!1sko!2skr"
+          width="400"
+          height="400"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      // API 키
+      const apiKey = "caab6b8f3cbbd5b6aee698bbccb5402c";
+      const currentWeather = document.querySelector("#currentWeather");
+      const forecast = document.querySelector("#forecast");
+
+      // 한글 도시명 → 영문 매핑
+      const cityMap = {
+        서울: "Seoul",
+        부산: "Busan",
+        대구: "Daegu",
+        인천: "Incheon",
+        광주: "Gwangju",
+        대전: "Daejeon",
+        울산: "Ulsan",
+        수원: "Suwon",
+        제주: "Jeju",
+        춘천: "Chuncheon",
+        강릉: "Gangneung",
+        전주: "Jeonju",
+        포항: "Pohang",
+        창원: "Changwon",
+      };
+
+      // 도시명 변환 함수
+      function convertCityName(city) {
+        return cityMap[city] || city;
+      }
+
+      // 현재 날씨
+      async function getWeather(city) {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=kr`,
+        );
+        const data = await res.json();
+        currentWeather.innerHTML = `
+            <div class="current-Weather">
+                <h4>현재 날씨</h4>
+    <h2>${data.name}</h2>
+    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="">
+    <p>날씨 : ${data.weather[0].main}</p>
+    <p>${data.weather[0].description}</p>
+    <p>기온 : ${data.main.temp}°C</p>
+    <p>체감온도 : ${data.main.feels_like}°C</p>
+    <p>습도 : ${data.main.humidity}%</p>
+    <p>풍속 : ${data.wind.speed}m/s</p>
+</div>
+            `;
+      }
+
+      // 5일간 날씨
+      async function getForecast(city) {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric&lang=kr`,
+        );
+        const data = await res.json();
+        // 5일 예보는 3시간마다 날씨 정보 제공
+        // data.list = [
+        //   { dt_txt: "2026-06-12 00:00:00" },
+        //   { dt_txt: "2026-06-12 03:00:00" },
+        //   { dt_txt: "2026-06-12 06:00:00" },
+        //   { dt_txt: "2026-06-12 09:00:00" },
+        //   { dt_txt: "2026-06-12 12:00:00" },
+        //   { dt_txt: "2026-06-12 15:00:00" }
+        // ];
+        // 하루에 한 번(12시 기준) 데이터만 추출
+        const dailyData = data.list.filter((item) =>
+          item.dt_txt.includes("12:00:00"),
+        );
+
+        forecast.innerHTML = dailyData
+          .map((item) => {
+            const date = new Date(item.dt_txt);
+            const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
+            return `
+                <div class="forecast-item">
+                    <p>${dateStr}</p>
+                    <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png" alt="">
+                    <p>${item.weather[0].description}</p>
+                    <p>${item.main.temp}°C</p>
+                </div>
+                `;
+          })
+          .join("");
+      }
+
+      // 도시 검색되는 기능
+      async function searchWeather() {
+        // 검색창에 입력하는 도시
+        let city = document.querySelector("#city").value;
+        if (!city) {
+          alert("도시명을 입력하세요.");
+          return;
+        }
+        city = convertCityName(city);
+
+        await getWeather(city);
+        await getForecast(city);
+      }
+
+      // 검색창에 클릭하고 Enter키 눌렀을 때
+      const searchBtn = document.querySelector("#searchBtn");
+      const cityInput = document.querySelector("#city");
+      searchBtn.addEventListener("click", searchWeather);
+      cityInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          searchWeather();
+        }
+      });
+    </script>
+  </body>
+</html>
